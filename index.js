@@ -45,6 +45,15 @@ function replace(text, options) {
   var includeRegExp = new RegExp(escapeRegExp(options.prefix) + "(.+?)" + escapeRegExp(options.suffix), "g");
 
   var retVal = text;
+  
+  //fix for big files. Somewhy RegExp.exec stops working after reaching lastIndex===44348
+  var keys = Object.keys(options.tokens)
+  for(var i=0; i<keys.length; i++){
+    var t = keys[i];
+    retVal = retVal.replace(new RegExp("{{"+t+"}}","gm"), options.tokens[t]);
+  }
+  //end fix
+  
   var regExpResult;
   while (regExpResult = includeRegExp.exec(text)) {
     var arrayDetected = false;
