@@ -47,10 +47,10 @@ function replace(text, options) {
   var retVal = text;
   
   //fix for big files. Somewhy RegExp.exec stops working after reaching lastIndex===44348
-  var keys = Object.keys(options.tokens)
-  for(var i=0; i<keys.length; i++){
-    var t = keys[i];
-    retVal = retVal.replace(new RegExp("{{"+t+"}}","gm"), options.tokens[t]);
+  var tokenKeys = Object.keys(options.tokens)
+  for(var i=0; i<tokenKeys.length; i++){
+    var token = tokenKeys[i];
+    retVal = retVal.replace(new RegExp(escapeRegExp(options.prefix) + token + escapeRegExp(options.suffix),"gm"), options.tokens[token]);
   }
   //end fix
   
