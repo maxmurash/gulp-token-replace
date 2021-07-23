@@ -1,4 +1,4 @@
-# gulp-token-replace [![NPM version][npm-image]][npm-url] [![Build status][travis-image]][travis-url]
+# gulp-token-replace  [![NPM version][npm-image]][npm-url] [![Build status][travis-image]][travis-url]
 
 > A token replace plugin for gulp 3
 
